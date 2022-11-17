@@ -1,6 +1,5 @@
 import {HardhatRuntimeEnvironment} from "hardhat/types"
 import { DeployFunction } from "hardhat-deploy/dist/types"
-import networkConfig from "../helper-hardhat-config"
 import {verify} from "../utils/verify"
 import { ethers } from "hardhat";
 
@@ -26,6 +25,7 @@ const deployGovToken: DeployFunction = async function(
 
         await delegate(governanceToken.address, deployer)
         console.log(`votes delegated to ${deployer}`)
+        console.log("--------------------------------")
     };
 
     const delegate = async (governanceTokenAddress: string, delegatedAccount: string) => {
@@ -38,5 +38,6 @@ const deployGovToken: DeployFunction = async function(
 
 
 
-   export default deployGovToken;
+   export default deployGovToken
+   deployGovToken.tags = ["all" , "govToken"]
 

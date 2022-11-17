@@ -1,6 +1,6 @@
 import { HardhatUserConfig } from "hardhat/types"
 
-const networkConfig  = {
+export const networkConfig  = {
     1:{
         name: "ethereum mainnet",
          
@@ -46,7 +46,6 @@ export const MIN_DELAY = 3600// 1 hour - after a vote passes, you have 1 hour be
 // export const VOTING_PERIOD = 45818 // 1 week - how long the vote lasts. This is pretty long even for local tests
 export const VOTING_PERIOD = 5 // 5 blocks to be able to test ir correctly
 export const VOTING_DELAY = 1 // 1 Block - How many blocks till a proposal vote becomes active
+export const PROPOSAL_THRESHOLD = 0
 export const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000"
 
-
-export default networkConfig
