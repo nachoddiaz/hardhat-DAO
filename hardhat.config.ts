@@ -4,13 +4,13 @@ import "hardhat-deploy"
 import "hardhat-gas-reporter"
 import "hardhat-contract-sizer"
 import "solidity-coverage"
-import "dotenv"
+import "dotenv/config"
 import "@typechain/hardhat"
 import { HardhatUserConfig } from "hardhat/types"
 
 const Rinkeby_URL = process.env.Rinkeby_RPC_URL
 const Goerly_URL = process.env.Goerly_RPC_URL
-const PRIVATE_KEY = process.env.Private_KEY
+const PRIVATE_KEY = process.env.Private_KEY as string
 const CMC_API_KEY = process.env.CMCAPI
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY
 
@@ -27,13 +27,11 @@ const config : HardhatUserConfig = {
         },
         rinkeby: {
             chainId: 4,
-            blockConfirmations: 3,
             url: Rinkeby_URL,
             accounts: [PRIVATE_KEY],
         },
         goerli: {
             chainId: 5,
-            blockConfirmations: 3,
             url: Goerly_URL,
             accounts: [PRIVATE_KEY],
         },
@@ -70,3 +68,5 @@ const config : HardhatUserConfig = {
         timeout: 1000000, // está en ms
     },
 }
+
+export default config
