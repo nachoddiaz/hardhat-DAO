@@ -18,14 +18,8 @@ const deployBox: DeployFunction = async function(
             /* waitConfirmations: networkConfig[network.name].blockConfirmations || 1, */
         })
 
-        const timeLock = await ethers.getContract("TimeLock")
-        //Transfer te ownership of the Box contract to the TimeLock contract
-        const boxContract =  await ethers.getContractAt("Box", box.address)
-        //The transferOwnership functions come from Ownable.sol
-        const tranferOwnerTx = await boxContract.transferOwnership(timeLock.address)
-        await tranferOwnerTx.wait(1)
-
         log(`Box contract deployed at address ${box.address}`)
+        log("------------------------------------------------")
         if (chainId != 31337 && process.env.ETHERSCAN_API_KEY) {
             await verify(box.address, arguments)
             log("Contract Verified")
