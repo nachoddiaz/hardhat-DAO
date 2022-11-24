@@ -48,4 +48,6 @@ export const VOTING_PERIOD = 5 // 5 blocks to be able to test ir correctly
 export const VOTING_DELAY = 1 // 1 Block - How many blocks till a proposal vote becomes active
 export const PROPOSAL_THRESHOLD = 0
 export const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000"
+export const NEW_STORE_VALUE = 77;
+export const FUNC = "storeValue"
 
