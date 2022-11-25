@@ -29,13 +29,27 @@ export async function propose(args: any[], functionToCall: string, proposalDescr
 
     const proposalId = await proposalReceipt.event[0].args.proposalId;
 
+    const proposalState = await governor.state(proposalId)
+    const proposalSnapShot = await governor.proposalSnapShot(proposalId)
+    const proposalDeadline = await governor.proposalDeadLine(proposalId)
+
+    // The state of the proposal. 1 is not passed. 0 is passed.
+    console.log(`Current Proposal State is ${proposalState} where 0 means that's not passed`)
+    // What block # the proposal was snapshot
+     console.log(`Current Proposal Snapshot is ${proposalSnapShot} block`)
+    // The block number the proposal voting expires
+    console.log(`Current Proposal Deadline is in ${proposalDeadline} block`)
+
     let proposals:any;
 
 
     
-    if (fs.existsSync(PROPOSALS_FILE)) {
+    if (fs.existsSync(PROPOSALS_FILE)) {}
     proposals = fs.readFileSync(PROPOSALS_FILE), "utf-8"
-    }
+    
+
+    proposals[network.config.chainId!.toString()].push(proposalId.toString());
+    fs.writeFileSync(PROPOSALS_FILE, JSON.stringify(proposals))
 
 
 
