@@ -50,4 +50,6 @@ export const PROPOSAL_THRESHOLD = 0
 export const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000"
 export const NEW_STORE_VALUE = 77;
 export const FUNC = "storeValue"
+export const PROPOSAL_DESCRIPTION = "Proposal #1: Store the number 77 in the Box"
 
+export const PROPOSALS_FILE = "proposals.json"
