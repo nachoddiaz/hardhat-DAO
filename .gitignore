@@ -6,6 +6,7 @@ typechain
 typechain-types
 deployments
 .vscode
+.yarn
 
 #Hardhat files
 cache
