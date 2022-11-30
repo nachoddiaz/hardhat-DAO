@@ -1,6 +1,7 @@
 import {HardhatRuntimeEnvironment} from "hardhat/types"
 import { DeployFunction } from "hardhat-deploy/dist/types"
 import {verify} from "../utils/verify"
+//@ts-ignore
 import { ethers } from "hardhat";
 
 const transferOwnership: DeployFunction = async function(

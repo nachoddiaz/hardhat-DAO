@@ -45,10 +45,20 @@ export async function propose(args: any[], functionToCall: string, proposalDescr
     // The block number the proposal voting expires
     console.log(`Current Proposal Deadline is in ${proposalDeadline} block`)
 
-   
-    let proposals = JSON.parse(fs.readFileSync(PROPOSALS_FILE, "utf8"))
-    proposals[network.config.chainId!.toString()].push(proposalId.toString())
-    fs.writeFileSync(PROPOSALS_FILE, JSON.stringify(proposals))
+
+    function storeProposalId(proposalId: any){
+        const chainId = network.config.chainId!.toString()
+        let proposals:any
+
+        if (fs.existsSync(PROPOSALS_FILE)) {
+            proposals = JSON.parse(fs.readFileSync(PROPOSALS_FILE, "utf8"));
+        } else {
+            proposals = { };
+            proposals[chainId] = [];
+        }   
+        proposals[chainId].push(proposalId.toString());
+        fs.writeFileSync(PROPOSALS_FILE, JSON.stringify(proposals), "utf8");
+    }
 
 
     

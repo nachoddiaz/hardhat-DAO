@@ -2,11 +2,13 @@ import {HardhatRuntimeEnvironment} from "hardhat/types"
 import { DeployFunction } from "hardhat-deploy/dist/types"
 import {networkConfig, MIN_DELAY, } from "../helper-hardhat-config"
 import {verify} from "../utils/verify"
+//@ts-ignore
 import { ethers } from "hardhat";
 
 const deployTimeLock: DeployFunction = async function(
     hre: HardhatRuntimeEnvironment
     ){
+        //@ts-ignore
         const{getNamedAccounts, deployments, network} = hre;
         const { deploy, log } = deployments
         const { deployer } = await getNamedAccounts()
